@@ -1,0 +1,12 @@
+{
+  "AppSyncApiName": "projectportfolio",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authprojectportfolio8428fd2b",
+      "Outputs.UserPoolId"
+    ]
+  },
+  "AuthModeLastUpdated": "2022-01-08T18:08:53.090Z"
+}
