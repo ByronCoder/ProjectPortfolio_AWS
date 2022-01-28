@@ -16,5 +16,23 @@
         "projectportfolio8428fd2b": {}
       }
     }
+  },
+  "newtest": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-projectportfolio-newtest-212232-authRole",
+      "UnauthRoleArn": "arn:aws:iam::342200920517:role/amplify-projectportfolio-newtest-212232-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::342200920517:role/amplify-projectportfolio-newtest-212232-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-projectportfolio-newtest-212232-deployment",
+      "UnauthRoleName": "amplify-projectportfolio-newtest-212232-unauthRole",
+      "StackName": "amplify-projectportfolio-newtest-212232",
+      "StackId": "arn:aws:cloudformation:us-east-1:342200920517:stack/amplify-projectportfolio-newtest-212232/d4780220-7997-11ec-ae65-0e860b3d6d2f",
+      "AmplifyAppId": "d1yq2vd1hh6fzh"
+    },
+    "categories": {
+      "auth": {
+        "projectportfolio8428fd2b": {}
+      }
+    }
   }
 }

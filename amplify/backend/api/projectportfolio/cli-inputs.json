@@ -3,7 +3,7 @@
   "serviceConfiguration": {
     "apiName": "projectportfolio",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "C:\\Users\\byron\\project-portfolio\\amplify\\backend\\api\\projectportfolio\\schema.graphql",
+    "gqlSchemaPath": "C:\\Users\\unsur\\OneDrive\\Documents\\GitHub\\tests\\Byron\\ProjectPortfolio_AWS\\amplify\\backend\\api\\projectportfolio\\schema.graphql",
     "defaultAuthType": {
       "mode": "AMAZON_COGNITO_USER_POOLS",
       "cognitoUserPoolId": "authprojectportfolio8428fd2b"
@@ -11,6 +11,12 @@
     "additionalAuthTypes": [
       {
         "mode": "AWS_IAM"
+      },
+      {
+        "mode": "API_KEY",
+        "expirationTime": 7,
+        "apiKeyExpirationDate": "2022-02-04T14:56:51.435Z",
+        "keyDescription": ""
       }
     ],
     "conflictResolution": {}

@@ -33,16 +33,19 @@ const AdminForm = () => {
       const projectData = await API.graphql({
         query: listProjects,
         variables: {},
-        authMode: "AWS_IAM",
+        authMode: "AMAZON_COGNITO_USER_POOLS", // Using AMAZON_COGNITO_USER_POOLS for private read as user should be authenticated at this point
       });
       const projects = projectData.data.listProjects.items;
       setProjects(projects);
     } catch (err) {
-      console.log("error fetching projects: " + err);
+      console.error("error fetching projects: ",err);
     }
   };
 
-  const addProject = async () => {
+  const addProject = async (evt) => {
+
+    evt.preventDefault(); // Done to prevent refresh of page
+
     try {
       if (
         (!formState.title || !formState.description || !formState.sourceLink,
@@ -53,9 +56,13 @@ const AdminForm = () => {
       const project = { ...formState };
       setProjects([...projects, project]);
       setFormState(initialState);
-      await API.graphql(graphqlOperation(createProject, { input: project }));
+      await API.graphql({
+        query: createProject,
+        variables: { input: project },
+        authMode: "AMAZON_COGNITO_USER_POOLS"
+      });
     } catch (err) {
-      console.log("error creating project:", err);
+      console.error("error creating project: ", err); // Changed to console.error
     }
   };
 
@@ -65,7 +72,7 @@ const AdminForm = () => {
     try {
       await API.graphql({ query: deleteProject, variables: { input: { id } } });
     } catch (err) {
-      alert(err.message);
+      console.error(err.message);
     }
   };
 

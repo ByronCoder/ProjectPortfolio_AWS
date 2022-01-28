@@ -4,11 +4,11 @@
 export const getProject = /* GraphQL */ `
   query GetProject($id: ID!) {
     getProject(id: $id) {
-      id
       title
       description
       sourceLink
       demoLink
+      id
       createdAt
       updatedAt
     }
@@ -22,11 +22,11 @@ export const listProjects = /* GraphQL */ `
   ) {
     listProjects(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
-        id
         title
         description
         sourceLink
         demoLink
+        id
         createdAt
         updatedAt
       }

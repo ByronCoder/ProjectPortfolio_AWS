@@ -1,18 +1,12 @@
 type Project
   @model
-  @aws_iam
-  @aws_cognito_user_pools
   @auth(
     rules: [
-      { allow: public, provider: iam, operations: [read] }
-      {
-        allow: private
-        provider: userPools
-        operations: [create, read, update, delete]
-      }
+      { allow: public, provider: apiKey, operations: [read] },
+      { allow: private, provider: userPools, operations: [create, read, update, delete] }
     ]
   ) {
-  id: ID!
+  # id: ID! # Not needed as this is automatically generated
   title: String!
   description: String!
   sourceLink: String!
