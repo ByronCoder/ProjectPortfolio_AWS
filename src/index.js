@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import AdminForm from "./components/AdminForm";
-import EditForm from "./components/EditForm";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Amplify from "aws-amplify";
@@ -17,7 +16,6 @@ render(
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="admin" exact path="/admin" element={<AdminForm />} />
-      <Route name="edit" exact path="/edit/:id" element={<EditForm />} />
     </Routes>
   </BrowserRouter>,
   rootElement

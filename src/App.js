@@ -1,6 +1,6 @@
 import logo from "./mypic.jpeg";
 import "./App.css";
-import ProjectsTable from "./components/ProjectTable";
+import ProjectsTable from "./components/ProjectsTable";
 import { Nav, Navbar, Image } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
