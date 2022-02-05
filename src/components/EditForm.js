@@ -7,35 +7,30 @@ import { getProject, listProjects } from "../../src/graphql/queries";
 import { API, graphqlOperation } from "aws-amplify";
 
 const EditForm = () => {
-  const [projects, setProjects] = useState([]);
   const { id } = useParams();
-  console.log(id);
-  const fetchProjects = async () => {
+
+  const projectDetails = async () => {
     try {
       const projectData = await API.graphql({
         query: getProject,
         variables: { id },
       });
-      const projects = projectData.data.getProject;
-      console.log(projects);
-      setProjects(projects);
+      const project = projectData.data.getProject;
+      return project;
     } catch (err) {
-      console.log("error fetching project: " + err);
+      console.error("error fetching project: " + err);
     }
   };
 
+  const editProject = async () => {
+    console.log("not implemented");
+  };
+
   useEffect(() => {
-    fetchProjects();
+    projectDetails();
   }, []);
 
-  return (
-    <div>
-      <p>{projects.title}</p>
-      <p>{projects.description}</p>
-      <p>{projects.sourceLink}</p>
-      <p>{projects.demoLink}</p>
-    </div>
-  );
+  return <div></div>;
 };
 
 export default EditForm;

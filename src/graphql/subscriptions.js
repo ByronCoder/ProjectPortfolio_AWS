@@ -4,11 +4,11 @@
 export const onCreateProject = /* GraphQL */ `
   subscription OnCreateProject {
     onCreateProject {
-      id
       title
       description
       sourceLink
       demoLink
+      id
       createdAt
       updatedAt
     }
@@ -17,11 +17,11 @@ export const onCreateProject = /* GraphQL */ `
 export const onUpdateProject = /* GraphQL */ `
   subscription OnUpdateProject {
     onUpdateProject {
-      id
       title
       description
       sourceLink
       demoLink
+      id
       createdAt
       updatedAt
     }
@@ -30,11 +30,11 @@ export const onUpdateProject = /* GraphQL */ `
 export const onDeleteProject = /* GraphQL */ `
   subscription OnDeleteProject {
     onDeleteProject {
-      id
       title
       description
       sourceLink
       demoLink
+      id
       createdAt
       updatedAt
     }

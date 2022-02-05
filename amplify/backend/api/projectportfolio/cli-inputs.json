@@ -11,6 +11,12 @@
     "additionalAuthTypes": [
       {
         "mode": "AWS_IAM"
+      },
+      {
+        "mode": "API_KEY",
+        "expirationTime": 7,
+        "apiKeyExpirationDate": "2022-02-05T15:44:55.326Z",
+        "keyDescription": "Get projects"
       }
     ],
     "conflictResolution": {}

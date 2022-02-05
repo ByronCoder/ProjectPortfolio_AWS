@@ -4,7 +4,7 @@ type Project
   @aws_cognito_user_pools
   @auth(
     rules: [
-      { allow: public, provider: iam, operations: [read] }
+      { allow: public, provider: apiKey, operations: [read] }
       {
         allow: private
         provider: userPools
@@ -12,7 +12,6 @@ type Project
       }
     ]
   ) {
-  id: ID!
   title: String!
   description: String!
   sourceLink: String!

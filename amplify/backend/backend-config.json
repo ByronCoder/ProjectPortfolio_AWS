@@ -14,6 +14,14 @@
           "additionalAuthenticationProviders": [
             {
               "authenticationType": "AWS_IAM"
+            },
+            {
+              "authenticationType": "API_KEY",
+              "apiKeyConfig": {
+                "apiKeyExpirationDays": 7,
+                "apiKeyExpirationDate": "2022-02-05T15:44:55.326Z",
+                "description": "Get projects"
+              }
             }
           ]
         }

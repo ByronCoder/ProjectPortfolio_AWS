@@ -2,6 +2,7 @@ import { API, graphqlOperation } from "aws-amplify";
 import React from "react";
 import "../../src/App.css";
 import { listProjects } from "../../src/graphql/queries";
+import { Auth } from "aws-amplify";
 
 class ProjectsTable extends React.Component {
   constructor(props) {
@@ -9,17 +10,29 @@ class ProjectsTable extends React.Component {
     this.state = { projectsList: [] };
   }
 
+  checkAuthenticated = async () => {
+    let user = null;
+
+    try {
+      user = await Auth.currentAuthenticatedUser();
+      return user;
+    } catch (err) {
+      console.error("Error validating user", err);
+    }
+  };
+
   fetchProjects = async () => {
     try {
+      let user = await this.checkAuthenticated();
       const projectData = await API.graphql({
         query: listProjects,
         variables: {},
-        authMode: "AWS_IAM",
+        authMode: user ? "AMAZON_COGNITO_USER_POOLS" : "API_KEY",
       });
       const projects = projectData.data.listProjects.items;
       this.setState({ projectsList: projects });
     } catch (err) {
-      alert(err);
+      console.error(err);
     }
   };
 
