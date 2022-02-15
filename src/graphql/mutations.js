@@ -7,11 +7,11 @@ export const createProject = /* GraphQL */ `
     $condition: ModelProjectConditionInput
   ) {
     createProject(input: $input, condition: $condition) {
+      id
       title
       description
       sourceLink
       demoLink
-      id
       createdAt
       updatedAt
     }
@@ -23,11 +23,11 @@ export const updateProject = /* GraphQL */ `
     $condition: ModelProjectConditionInput
   ) {
     updateProject(input: $input, condition: $condition) {
+      id
       title
       description
       sourceLink
       demoLink
-      id
       createdAt
       updatedAt
     }
@@ -39,11 +39,11 @@ export const deleteProject = /* GraphQL */ `
     $condition: ModelProjectConditionInput
   ) {
     deleteProject(input: $input, condition: $condition) {
+      id
       title
       description
       sourceLink
       demoLink
-      id
       createdAt
       updatedAt
     }

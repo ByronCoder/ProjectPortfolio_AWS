@@ -12,6 +12,7 @@ type Project
       }
     ]
   ) {
+  id: ID!
   title: String!
   description: String!
   sourceLink: String!

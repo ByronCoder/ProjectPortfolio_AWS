@@ -16,6 +16,7 @@ render(
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="admin" exact path="/admin" element={<AdminForm />} />
+      <Route name="edit" exact path="/edit/:id" element={<AdminForm />} />
     </Routes>
   </BrowserRouter>,
   rootElement
