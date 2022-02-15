@@ -7,11 +7,8 @@ import { listProjects, getProject } from "../../src/graphql/queries";
 import { API, Auth } from "aws-amplify";
 
 const checkAuthenticated = async () => {
-  let user = null;
-
   try {
-    user = await Auth.currentAuthenticatedUser();
-    return user;
+    return await Auth.currentAuthenticatedUser();
   } catch (err) {
     console.error("Error validating user", err);
   }
@@ -25,30 +22,30 @@ const getAll = async () => {
       variables: {},
       authMode: user ? "AMAZON_COGNITO_USER_POOLS" : "API_KEY",
     });
-    const projects = projectData.data.listProjects.items;
-    return projects;
+    return projectData.data.listProjects.items;
   } catch (err) {
     console.error(err);
   }
 };
 
-const getById = async ({ id }) => {
-  let user = await this.checkAuthenticated();
+const getById = async (id) => {
   try {
-    let project = await API.graphql({
+    let user = await checkAuthenticated();
+    const projectDetails = await API.graphql({
       query: getProject,
-      variables: { input: { id } },
+      variables: { id: id },
       authMode: user ? "AMAZON_COGNITO_USER_POOLS" : "API_KEY",
     });
-    return project;
+
+    return projectDetails.data.getProject;
   } catch (err) {
-    console.error(err.message);
+    console.error(err);
   }
 };
 
 const create = async (data) => {
   try {
-    await API.graphql({
+    return await API.graphql({
       query: createProject,
       variables: { input: data },
       authMode: "AMAZON_COGNITO_USER_POOLS",
@@ -59,26 +56,28 @@ const create = async (data) => {
 };
 
 const update = async (data) => {
+  console.log(data);
   try {
-    await API.graphql({
+    return await API.graphql({
       query: updateProject,
+
       variables: { input: data },
       authMode: "AMAZON_COGNITO_USER_POOLS",
     });
   } catch (err) {
-    console.error("error creating project:", err);
+    console.error("error updating project:", err);
   }
 };
 
 const _delete = async (id) => {
   try {
-    await API.graphql({
+    return await API.graphql({
       query: deleteProject,
-      variables: { input: id },
+      variables: { input: { id } },
       authMode: "AMAZON_COGNITO_USER_POOLS",
     });
   } catch (err) {
-    console.error(err.message);
+    console.error(err);
   }
 };
 
