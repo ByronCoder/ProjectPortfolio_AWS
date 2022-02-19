@@ -1,3 +1,7 @@
+# Byron's Project Portfolio on AWS
+
+This is a new version of my project portfolio website using AWS Amplify, AWS AppSync, AWS DynamoDB, and AWS Cognito with React.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
