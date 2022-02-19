@@ -47,7 +47,6 @@ const AdminForm = () => {
       .create(data)
       .then(() => {
         const project = { ...data };
-        console.log(project);
         setProjects([...projects, project]);
       })
       .catch(() => {
@@ -81,17 +80,17 @@ const AdminForm = () => {
       });
   };
 
+  const updateForm = async (id) => {
+    projectService.getById(id).then((project) => {
+      const fields = ["id", "title", "description", "sourceLink", "demoLink"];
+      fields.forEach((field) =>
+        setValue(field, project[field], { shouldValidate: true })
+      );
+    });
+  };
+
   useEffect(() => {
     fetchProjects();
-    if (!isAddMode) {
-      console.log(id);
-      projectService.getById(id).then((project) => {
-        const fields = ["id", "title", "description", "sourceLink", "demoLink"];
-        fields.forEach((field) =>
-          setValue(field, project[field], { shouldValidate: true })
-        );
-      });
-    }
   });
 
   return (
@@ -190,7 +189,7 @@ const AdminForm = () => {
                         </td>
                         <td>
                           <Link
-                            reloadDocument="true"
+                            onClick={() => updateForm(proj.id)}
                             className="btn btn-primary"
                             to={{
                               pathname: "/edit/" + proj.id,
