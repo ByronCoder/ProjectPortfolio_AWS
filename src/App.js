@@ -1,92 +1,197 @@
 import logo from "./mypic.jpeg";
 import "./App.css";
-import ProjectsTable from "./components/ProjectsTable";
-import { Nav, Navbar, Image } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+import CssBaseline from "@mui/material/CssBaseline";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import Avatar from "@mui/material/Avatar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCode } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
+import { ProjectsView } from "./components/ProjectsView";
+
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Stack } from "@mui/material";
+import { main } from "@popperjs/core";
+
+const theme = createTheme({
+  palette: {
+    type: "dark",
+    primary: {
+      main: "#0f0",
+    },
+    background: {
+      default: "#111111",
+      paper: "#212121",
+    },
+    text: {
+      primary: "rgba(255,255,255,0.87)",
+      secondary: "rgba(255,215,215,0.54)",
+    },
+  },
+  typography: {
+    fontFamily: "Open Sans",
+    h1: {
+      fontFamily: "Ubuntu Mono",
+    },
+    h2: {
+      fontFamily: "Ubuntu Mono",
+    },
+    h3: {
+      fontFamily: "Ubuntu Mono",
+    },
+    h4: {
+      fontFamily: "Ubuntu Mono",
+    },
+    h6: {
+      fontFamily: "Ubuntu Mono",
+    },
+    h5: {
+      fontFamily: "Ubuntu Mono",
+    },
+    subtitle1: {
+      fontFamily: "Ubuntu Mono",
+    },
+    subtitle2: {
+      fontFamily: "Ubuntu Mono",
+    },
+    button: {
+      fontFamily: "Ubuntu Mono",
+      fontWeight: 900,
+    },
+    overline: {
+      fontFamily: "Ubuntu Mono",
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <Navbar collapseOnSelect expand="lg" fixed="top">
-        <Navbar.Brand className="navbar-brand" href="#home">
-          <FontAwesomeIcon icon={faCode} size="1x" color="white" /> Byron
-          Blank's Portfolio
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="ml-auto">
-            <Nav.Link href="#portfolio">Portfolio</Nav.Link>
-            <Nav.Link href="#about">About</Nav.Link>
-            <Nav.Link href="#contact">Contact</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-
-      <header className="jumbotron text-black text-center">
-        <h1 className="heading-text">Byron Blank's Portfolio</h1>
-        <Image src={logo} alt="" className="portfolio-img rounded-circle" />
-        <p className="jumbotron-subheading font-weight-light mb-0">
-          Web Developer
-        </p>
-      </header>
-      <section className="page-section" id="about">
-        <h2 className="page-section-header">About</h2>
-        <p className="about-text">
-          Hello, my name is Byron Blank and I am a web developer. You can find
-          the projects in my portfolio below along with links to a demo and the
-          source on GitHub.
-        </p>
-      </section>
-
-      <section className="page-section" id="portfolio">
-        <h2 className="page-section-header">Portfolio</h2>
-        <div className="portDiv">
-          <ProjectsTable />
-        </div>
-      </section>
-
-      <section className="page-section" id="contact">
-        <div className="container">
-          <h2 className="page-section-header">Contact Me</h2>
-          <div>
-            <a
-              href="https://www.linkedin.com/in/byron-blank-aa942015/"
-              target="_blank"
-              rel="noopener noreferrer"
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
             >
-              <FontAwesomeIcon
-                className="social-icon"
-                icon={faLinkedin}
-                size="5x"
-                color="lightblue"
-              />
-            </a>
-            <a
-              href="https://github.com/ByronCoder"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FontAwesomeIcon
-                className="social-icon"
-                icon={faGithub}
-                size="5x"
-                color="lightblue"
-              />
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <footer className="footer text-center text-white">
-        <div className="container">
-          <small>Copyright &copy; Byron Blank 2021</small>
-        </div>
-      </footer>
-    </div>
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              Byron Blank's Project Portfolio
+            </Typography>
+            <Button>Test</Button>
+          </Toolbar>
+        </AppBar>
+      </Box>
+      <Box sx={{ flexGrow: 1, paddingTop: 5 }}>
+        <Paper elevation={3}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Typography
+                variant="h3"
+                component="div"
+                sx={{
+                  flewGrow: 1,
+                  textAlign: "center",
+                  fontWeight: "bold",
+                }}
+              >
+                Byron Blank's Project Portfolio
+              </Typography>{" "}
+              <Grid item xs={12}>
+                <Avatar
+                  alt="Byron Blank"
+                  src={logo}
+                  sx={{ width: 200, height: 200, margin: "auto" }}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <Typography
+                  variant="h3"
+                  component="div"
+                  sx={{
+                    flewGrow: 1,
+                    textAlign: "center",
+                  }}
+                >
+                  I am a web developer.
+                </Typography>{" "}
+              </Grid>
+            </Grid>
+          </Grid>
+        </Paper>
+      </Box>
+      <Box sx={{ flexGrow: 1, paddingTop: 5 }}>
+        <Paper elevation={3}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Typography
+                variant="h4"
+                component="div"
+                sx={{
+                  flewGrow: 1,
+                  textAlign: "center",
+                }}
+              >
+                Projects
+              </Typography>{" "}
+            </Grid>
+            <Grid item xs={12}>
+              <ProjectsView />
+            </Grid>
+          </Grid>
+        </Paper>
+      </Box>
+      <Box sx={{ flexGrow: 1, paddingTop: 5 }}>
+        <Paper elevation={3}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Typography
+                variant="h4"
+                component="div"
+                sx={{
+                  flewGrow: 1,
+                  textAlign: "center",
+                }}
+              >
+                Contact Me
+              </Typography>{" "}
+            </Grid>
+            <Grid item xs={12}>
+              <Box sx={{ display: "flex", justifyContent: "center" }}>
+                <Stack direction="row" spacing={2}>
+                  <IconButton aria-label="linkedin">
+                    <FontAwesomeIcon
+                      icon={faLinkedin}
+                      size="3x"
+                      color={theme.palette.primary.main}
+                    />
+                  </IconButton>
+                  <IconButton aria-label="github">
+                    <FontAwesomeIcon
+                      icon={faGithub}
+                      size="3x"
+                      color={theme.palette.primary.main}
+                    />
+                  </IconButton>
+                </Stack>
+              </Box>
+            </Grid>
+          </Grid>
+        </Paper>
+      </Box>
+    </ThemeProvider>
   );
 }
 export default App;

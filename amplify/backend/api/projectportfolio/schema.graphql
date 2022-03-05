@@ -1,6 +1,5 @@
 type Project
   @model
-  @aws_iam
   @aws_cognito_user_pools
   @auth(
     rules: [

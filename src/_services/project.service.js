@@ -8,9 +8,10 @@ import { API, Auth } from "aws-amplify";
 
 const checkAuthenticated = async () => {
   try {
-    return await Auth.currentAuthenticatedUser();
-  } catch (err) {
-    console.error("Error validating user", err);
+    await Auth.currentAuthenticatedUser();
+    return true;
+  } catch {
+    return false;
   }
 };
 
